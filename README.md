@@ -33,7 +33,12 @@
 
 5. [Github](#5-github)
    - [Github Nedir](#github-nedir)
-   - [Git ve Githu Arasındaki Farklar](#git-ve-github-arasındaki-farklar)
+   - [Git ve Github Arasındaki Farklar](#git-ve-github-arasındaki-farklar)
+   - [Github İle Repo](#github-i̇lk-repo)
+   - [Git Push](#git-push)
+   - [Fetch ve Pull](#fetch-ve-pull)
+   - [Clone](#clone)
+   - [Fork](#fork)
 
 ## 1.Giriş
 
@@ -154,7 +159,7 @@ Mail adresinizi **Git**'in sistemine kayıt etmek için:
 
 Yukarıdaki adımları takip ederek kendi kullanıcı adınızı ve email adresinizi **Git** sistemine kaydedebilirsiniz.
 
-**Not:**  Git Varsayılan Düzenleyicisini Değiştirme
+**Not:** Git Varsayılan Düzenleyicisini Değiştirme
 
 - **Git**'in varsayılan metin düzenleyicisi, genellikle **Nano** veya **Vim** gibi bir **konsol** editörüdür. Ancak, birçok kullanıcı için bu editörler kullanımı zor veya rahatsız edici olabilir. Neyse ki, **Git**'in default editör ayarlarını değiştirmek oldukça kolaydır.
 
@@ -192,7 +197,7 @@ Yukarıdaki komutları kullanarak, Git'in default editör ayarlarını değişti
 
 **Yazılanları Görselleştirirsek:**
 
-**Working Directory** -> `git add` -> **Index - Staging Area** ->  `git commit` -> **Local Repository** -> `git push` **Upstream Repository**
+**Working Directory** -> `git add` -> **Index - Staging Area** -> `git commit` -> **Local Repository** -> `git push` **Upstream Repository**
 
 `git status`: Git'in güncel durumunu gösterir. Bu komut ile hangi branch'te olduğumuz veya hangi dosyaların staging alanında olduğu gibi bilgiler verir.
 
@@ -253,7 +258,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
   - `(HEAD -> master)` güncel içerisinde bulunduğumuz branch'i referans alır genelde, genelde de en son commiti söyler bize
 
-- `.gitignore`:  Git'in belirtilen dosyaları görmezden gelmesine izin veren bir dosyadır. Bu dosya, Git projesindeki belirli dosyaların veya dosya türlerinin depolanmaması veya takip edilmemesi gerektiği durumlarda kullanılır. Gitignore dosyası, proje kök dizinine yerleştirilir ve adı .gitignore olarak kaydedilir. Bu dosyaya eklenen öğeler, Git'in bunları takip etmesini veya depolamasını engeller. Örneğin, .gitignore dosyasına "node_modules" yazarak, Git'in bu klasörü takip etmesi engellenir ve böylece projenin boyutu azaltılır ve depolama alanı tasarrufu sağlanır. Gitignore dosyaları, farklı diller ve projeler için önceden hazırlanmış şablonlar (template) içeren Gitignore.io gibi kaynaklardan da indirilebilir.
+- `.gitignore`: Git'in belirtilen dosyaları görmezden gelmesine izin veren bir dosyadır. Bu dosya, Git projesindeki belirli dosyaların veya dosya türlerinin depolanmaması veya takip edilmemesi gerektiği durumlarda kullanılır. Gitignore dosyası, proje kök dizinine yerleştirilir ve adı .gitignore olarak kaydedilir. Bu dosyaya eklenen öğeler, Git'in bunları takip etmesini veya depolamasını engeller. Örneğin, .gitignore dosyasına "node_modules" yazarak, Git'in bu klasörü takip etmesi engellenir ve böylece projenin boyutu azaltılır ve depolama alanı tasarrufu sağlanır. Gitignore dosyaları, farklı diller ve projeler için önceden hazırlanmış şablonlar (template) içeren Gitignore.io gibi kaynaklardan da indirilebilir.
 
 ## 3. Git Branch
 
@@ -398,7 +403,7 @@ Reset ve Revert, git'te geçmişe dönmek için kullanılan iki farklı yöntemd
   - 1. Seçenek: Commit'leri sil değişiklikler kalsın
   - 2. Seçenek: `git reset --hard  <commit id>` belirtilen commit'e kadar olan tüm commit'leri silersiniz ve geri dönüşü olmayan bir şekilde geçmişe dönersiniz. Bu nedenle, bu komutu kullanırken dikkatli olmak önemlidir.
 
-- `git revert <commit>`:  Bu komutu kullandığınızda, belirli bir commit'i geri alırsınız ve bu işlem sonucunda yeni bir commit oluşur. Bu sayede, Git geçmişi değiştirilmez, ancak istenmeyen değişiklikler geri alınmış olur. git revert işlemi sonrasında yapılan commit, geri alınan commit'in tam tersi işlevi görür. Loglar tutuluyor. History bozmadık.
+- `git revert <commit>`: Bu komutu kullandığınızda, belirli bir commit'i geri alırsınız ve bu işlem sonucunda yeni bir commit oluşur. Bu sayede, Git geçmişi değiştirilmez, ancak istenmeyen değişiklikler geri alınmış olur. git revert işlemi sonrasında yapılan commit, geri alınan commit'in tam tersi işlevi görür. Loglar tutuluyor. History bozmadık.
 
 Özetle, git reset komutu geçmişteki değişiklikleri silmenizi sağlar, ancak geri dönüşü olmayan bir şekilde. git revert komutu ise geçmişteki değişiklikleri geri alır ancak Git geçmişi bozulmaz ve yeni bir commit oluşur.
 
@@ -488,31 +493,118 @@ Repo ile oluşturulduğunda "Quick Setup" ekranı çıkacak.
 
 Bize `.git` ile biten bir URL oluşturdum diyor. Sonunda `.git` olması bizim repomuza referans verdiği anlamına gelir.
 
-Eğer `git` ile ilgili hiç birşey yapmadıysan sana nasıl yapacağın hakkında bilgi veriyor.
+Yeni bir repository oluşturmak için aşağıdaki adımları takip edebilirsiniz:
 
 ```bash
 …or create a new repository on the command line
-echo "# Git_ve_Github_Rehberi" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git
+
+# Yeni bir repository oluşturma
+echo "# Git_ve_Github_Rehberi" >> README.md # README.md dosyası oluşturulur ve içine başlık yazılır
+git init # git repository oluşturulur
+git add README.md # README.md dosyası staged area'ya eklenir
+git commit -m "first commit" # staged area'daki değişiklikler commit edilir
+git branch -M main # default branch ismi main olarak değiştirilir
+git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git # remote repository belirlenir
+git push -u origin main # origin'e commitler gönderilir
+
 git push -u origin main
 ```
 
-Eğer hali hazırda olan bir projeniz varsa onu Github pushlamak isterseniz aşağıdaki adımları takip edebilirsin diyor.
+Eğer hali hazırda olan bir projeniz varsa onu Github pushlamak isterseniz aşağıdaki adımları takip edebilirsiniz.
 
 ```bash
 …or push an existing repository from the command line
+
+git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git # Bunu sadece bir defa kullanacağız.
+git branch -M main
+git push -u origin main
+```
+
+- `remote`, uzaktaki repository için kullandığımız bir terim.
+
+- Bide `origin` kavramı çıkyor anlamı başlangıcı demek bu bir isim bir komut değildir. Yani `origin` dediğimde `https://github.com/mkdemir/Git_ve_Github_Rehberi.git` bu url temsil etmektedir.
+
+- `git push` ile de içerisindeki bulunduğunuz `commit`'leri `origin` ile temsil edilen yere gönderiyor.
+
+- `git push -u origin main`: Origin'e yolla diyor. Her zaman URL girmemizin önüne geçmektedir.
+
+Yada başka bir repository'den kodları çağrabilirsin.
+
+```bash
+...or push an existing repository from the command line
+
 git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git 
 git branch -M main
 git push -u origin main
 ```
 
-`Remote`, uzaktaki repository için kullandığımız bir terim. Bide `origin` kavramı çıkyor yani başlangıcı aslında bir isim bir komut değil. Yani origin dediğimde `https://github.com/mkdemir/Git_ve_Github_Rehberi.git`  bu url temsil edecek.
+### **Git Push**
 
-`git push` ile de içerisindeki bulunduğunuz `commit`'leri `origin` ile temsil edilen yere gönderiyor.
+`git push -u origin main`: **-u (upstream)** ifadesi, varsayılan yukarı akış depoya **(origin)** ve ana dal **(main)** için bir yer işaretçisi belirler. Bu işaretçi sayesinde, bir sonraki git push komutunu çağırdığınızda, Git, origin main argümanlarını tekrarlamak yerine bu yer işaretçisini kullanarak push işlemi yapar.
 
-`git push -u origin main`: Origin'e yolla diyor. Her zaman URL vermekten kurtarıyor.
+Bu sayede, git push komutunu çağırdığınızda, Git otomatik olarak belirlenen yer işaretçisine göre işlem yapar.
 
+### **Pull Request**
+
+Pull request (PR), bir yazılım projesinde değişiklik yapmak isteyen bir kullanıcının, projenin sahibi ya da ekibinin dikkatini çekmek ve değişikliklerinin ana kod tabanına (master dalı gibi) birleştirilmesini talep etmek için yaptığı bir istektir.
+
+Bir kullanıcı, projenin bir kopyasını (fork) oluşturarak değişikliklerini yapar ve bu değişiklikleri commit ederek kendi fork dalında saklar. Daha sonra, bu değişiklikleri orijinal projenin sahibine göstermek için bir pull request açar. Pull request, değişikliklerin açıkça açıklandığı bir iletişim kutusu görevi görür ve projenin sahibi ya da ekibi tarafından incelenir.
+
+Eğer değişiklikler onaylanırsa, projenin sahibi ya da ekibi, pull request'i kabul ederek değişiklikleri ana kod tabanına (master dalı gibi) birleştirir. Bu sayede, projeye katkıda bulunan herkesin değişiklikleri, ana kod tabanına dahil edilerek projenin geliştirilmesine katkı sağlar.
+
+Pull requestler, açık kaynak projelerinde çok yaygın olarak kullanılır ve topluluk tabanlı projelerin geliştirilmesinde önemli bir rol oynar.
+
+Örneğin, açık kaynak bir proje olan "MyAwesomeProject" üzerinde çalışıyorsunuz ve bir hata fark ettiniz. Bu hatayı düzeltmek istiyorsunuz ve değişikliğinizi proje sahibine göstermek için bir pull request açacaksınız.
+
+İşlem adımları şu şekilde olabilir:
+
+1. Projenin GitHub sayfasına gidin ve projeyi fork edin (kendi hesabınıza bir kopya oluşturun).
+2. Kendi fork dalınızı (branch) oluşturun ve hata düzeltmesini yapın.
+3. Değişikliklerinizi commit edin ve GitHub hesabınıza yükleyin.
+4. GitHub sayfasından, pull request (PR) düğmesine tıklayın ve değişikliklerinizi açıklayan bir açıklama yazın.
+5. PR'nizi projenin sahibine gönderin.
+6. Projenin sahibi veya ekibi, PR'nizi inceleyecek ve hata düzeltmesinin kabul edilip edilmeyeceğine karar verecek.
+7. Eğer değişiklikler kabul edilirse, projenin sahibi veya ekibi değişiklikleri ana kod tabanına (master dalı gibi) birleştirir ve sizin değişiklikleriniz de projede yer almış olur.
+
+Bu şekilde, pull request işlemi sayesinde, herhangi bir projeye katkıda bulunabilirsiniz ve bu projelerin geliştirilmesine katkıda bulunabilirsiniz.
+
+Not: Upstream branch'leri görmek için `git branch -r` komutunu kullanabilirsiniz.
+
+### **Fetch ve Pull**
+
+Fetch ve Pull, Git'te uzak bir deposundan (remote repository) yeni değişiklikleri alma işlemleridir.
+
+Fetch işlemi, uzak depodaki yeni değişiklikleri lokal depoya indirir ancak lokaldeki çalışma dizinine (working directory) birleştirmez. Bu işlem, uzak depodaki değişikliklerin var olup olmadığını kontrol etmek için kullanılabilir.
+
+Örneğin, başka bir kullanıcının değişiklikleri varsa ve siz bu değişiklikleri görmek istiyorsanız, git fetch komutunu kullanarak bu değişiklikleri indirebilirsiniz. Bu, değişiklikleri lokalde kontrol etmek için iyi bir yol olabilir.
+
+- `git fetch`: Değişiklikleri al lokale getir.
+
+Pull işlemi ise, uzak depodaki yeni değişiklikleri hem indirir hem de lokaldeki değişikliklerle birleştirir. Bu işlem, uzak depodaki değişiklikleri lokaldeki çalışma dizinine (working directory) eklemek istediğinizde kullanılır.
+
+Örneğin, bir proje üzerinde çalışıyorsanız ve projenin uzak deposunda yeni bir değişiklik olduğunu öğrendiyseniz, git pull komutunu kullanarak bu değişiklikleri indirerek lokaldeki çalışma dizininize ekleyebilirsiniz. Bu şekilde, uzak ve lokaldeki değişiklikler birleştirilir ve projenin en güncel haline sahip olursunuz.
+
+- `git pull` = `git fetch` + `git merge`
+- `git pull origin main`: Uzak depodaki (remote repository) "origin" adlı depodan "main" adlı dalın (branch) değişikliklerini indirerek lokal depoya (local repository) birleştirir. Yani, bu komut, uzak depodaki en güncel "main" dalındaki değişiklikleri indirir ve lokaldeki "main" dalıyla birleştirir.
+
+Kısacası, Fetch işlemi sadece uzak depodaki değişiklikleri indirirken, Pull işlemi hem indirme hem de birleştirme işlemlerini gerçekleştirir.
+
+### **Clone**
+
+`git clone` komutu, bir uzak depodaki (remote repository) tamamını veya belirli bir dalını (branch) kopyalamak için kullanılır. Yani, mevcut bir projenin tamamını veya bir bölümünü kopyalamak ve yerel makinede (local machine) bir kopya oluşturmak için kullanılır.
+
+Bu komut, uzak depodaki tüm dosyaları, tarihçeyi ve yapılandırmayı kopyalar ve lokalde yeni bir Git deposu oluşturur. Bu, projeye katılmak isteyen birisinin projeyi baştan oluşturmak yerine, mevcut bir kopyayı indirerek projede hızlıca yer almasına olanak sağlar.
+
+Örneğin, bir GitHub deposuna (repository) sahipseniz, bu komutu kullanarak yerel makinenizde bir kopya oluşturabilirsiniz:
+
+`git clone https://github.com/kullaniciAdi/projeAdi.git`
+
+Bu komut, uzak depodaki "projeAdi" adlı depoyu indirir ve yerel makinede "projeAdi" adlı bir dizin oluşturur. Artık, lokaldeki kopyayı değiştirebilir, yeni dosyalar ekleyebilir, yeni dal (branch) oluşturabilir ve değişiklikleri uzak depoya (remote repository) gönderebilirsiniz.
+
+### **Fork**
+
+Fork, bir GitHub deposunu (repository) kopyalamanın bir yoludur. Bu işlem, bir projeye katkıda bulunmak veya kendi projenizi başlatmak için kullanışlıdır. Fork işlemi, projenin tamamını veya belirli bir dalını (branch) kopyalar ve bu kopya, kullanıcının GitHub hesabına kaydedilir.
+
+Fork işlemi sayesinde, bir depoya katkıda bulunmak isteyen kullanıcılar, projeyi kendi GitHub hesaplarına kopyalayabilirler. Bu kopya üzerinde değişiklikler yapabilir, yeni özellikler ekleyebilir, hataları düzeltebilir veya depoyu tamamen farklı bir yöne yönlendirebilirler. Kullanıcılar, kendi hesaplarındaki kopyaları üzerinde çalıştıkları değişiklikleri ve geliştirmeleri, orijinal projenin sahibine yönlendirmek için Pull Request işlemi kullanabilirler.
+
+Fork işlemi, bir projeye katkıda bulunmak isteyenlerin, projenin sahibinden izin almalarına gerek kalmadan, projede değişiklik yapmalarına ve bu değişiklikleri paylaşmalarına olanak sağlar. Bu, açık kaynaklı projeler için oldukça yararlı bir işlemdir, çünkü projeyi geliştirmek isteyen herkesin kolayca katkıda bulunabilmesini sağlar.
