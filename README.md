@@ -33,7 +33,7 @@
 
 5. [Github](#5-github)
    - [Github Nedir](#github-nedir)
-   - [Git ve Github Arasındaki Farklar](#git-ve-github-arasındaki-farklar)
+   - [Git ve Github Arasındaki Farklar](#git-vegithubarasındaki-farklar)
    - [Github İle Repo](#github-i̇lk-repo)
    - [Git Push](#git-push)
    - [Fetch ve Pull](#fetch-ve-pull)
@@ -193,7 +193,7 @@ Yukarıdaki komutları kullanarak, Git'in default editör ayarlarını değişti
 
 - **Local Repository:** Bu, Git'in projenin tüm geçmiş sürümlerini ve değişikliklerini sakladığı yere denir. Yani, burası dosyalardaki değişiklikleri kaydettiğiniz yerdir. Local Repository, proje dizininde .git adı verilen bir klasör içinde saklanır. Bu klasör, projenin tam tarihçesini ve Git'in projeyle ilgili diğer verilerini içerir.
 
-- **Upstream Rrepository:** Bir projenin orijinal kaynak kod deposudur. Bu genellikle bir açık kaynak yazılım projesi için bir GitHub deposu veya benzeri bir git barındırma servisi olabilir. Fork işlemi yapıldığında, kullanıcının hesabında bir kopya oluşturulur ve bu kopya, orijinal proje ile senkronize edilebilir. Senkronize edildiğinde, kullanıcının kopyası, değişikliklerin yapılmasına, commit edilmesine ve bir pull request gönderilmesine izin verir. Upstream repository, orijinal proje ile senkronize edildiğinde, bu değişikliklerin orijinal projeye dahil edilmesini sağlar. Bu nedenle upstream repository, bir projenin yönetimi ve katkıda bulunulması için önemlidir.
+- **Upstream Rrepository:** Bir projenin orijinal kaynak kod deposudur. Bu genellikle bir açık kaynak yazılım projesi için bir **GitHub** deposu veya benzeri bir git barındırma servisi olabilir. Fork işlemi yapıldığında, kullanıcının hesabında bir kopya oluşturulur ve bu kopya, orijinal proje ile senkronize edilebilir. Senkronize edildiğinde, kullanıcının kopyası, değişikliklerin yapılmasına, commit edilmesine ve bir **Pull request** gönderilmesine izin verir. Upstream repository, orijinal proje ile senkronize edildiğinde, bu değişikliklerin orijinal projeye dahil edilmesini sağlar. Bu nedenle upstream repository, bir projenin yönetimi ve katkıda bulunulması için önemlidir.
 
 **Yazılanları Görselleştirirsek:**
 
@@ -441,21 +441,32 @@ Git'te "rebase" komutu, bir dalı diğerine eklemek için kullanılır ve birle�
 
 **Not:** Burada tarihi baştan yazıyoruz.
 
+**Örnek:** Bir projemiz var. Bu proje içerisindeki tüm commitleri silmek istiyorum.
+
+1. Öncelikle, projenizin tarihçesindeki hangi commitleri silmek istediğinizi belirleyin. Bu adımı yaparken dikkatli olun ve sadece silmek istediğiniz commitleri seçin.
+2. Silmek istediğiniz commitleri belirledikten sonra, bu commitlerin kimlik numaralarını (hash) alın. Bu işlemi, terminalden `git log` komutunu kullanarak yapabilirsiniz.
+3. Ardından, `git rebase -i` komutunu kullanarak interaktif rebasing işlemine başlayın. Bu işlem, önce belirlediğiniz commitin öncesi olan commitlerin tamamını geçici olarak saklar.
+4. Rebase işlemi sırasında karşınıza bir düzenleme ekranı açılacaktır. Bu ekranda, silmek istediğiniz commitlerin kimlik numaralarını (hash) belirtilen satırlardan silin.
+5. Düzenlemeyi kaydedip kapatın ve rebase işlemini tamamlayın.
+6. Son olarak, `git push --force` komutunu kullanarak, projenizi uzaktaki depoya itin. Ancak, burada dikkatli olun, `--force` parametresi, projenizi uzaktaki depoda bulunan versiyonla tamamen değiştirir. Bu nedenle, projenizi başka kullanıcıların çalıştığı bir ortamda kullanmadan önce, bu işlemi yapmanızı önermiyoruz.
+
+Unutmayın, eski commitleri silmek, projenizin tarihçesini değiştirerek geri dönüşü olmayan bir değişiklik yapar. Bu nedenle, bunu yapmadan önce, nedenini ve sonuçlarını iyi anladığınızdan emin olun.
+
 ## 5. GitHub
 
-### **GitHub Nedir**
+### ****GitHub** Nedir**
 
 **Git Nedir:** Sürüm kontrolü sistemi olarak bilinir. Sürüm kontrolü, bir projenin değişikliklerinin kaydedilmesi, takip edilmesi ve yönetilmesi için kullanılan bir teknolojidir. Git, birçok kişinin aynı projede çalışması durumunda kullanışlıdır.
 
-**GitHub Nedir:** Bu versiyon kontrol sistemi ile birlikte kullandığımız projeleri depolayabileceğimiz bir portal
+****GitHub** Nedir:** Bu versiyon kontrol sistemi ile birlikte kullandığımız projeleri depolayabileceğimiz bir portal
 
-### **Git ve GitHub Arasındaki Farklar**
+### **Git ve**GitHub**Arasındaki Farklar**
 
-Git, sadece bir sürüm kontrolü sistemidir ve yerel bir bilgisayarda çalışırken GitHub, Git üzerine inşa edilmiş bir bulut barındırma hizmetidir.
+Git, sadece bir sürüm kontrolü sistemidir ve yerel bir bilgisayarda çalışırken **GitHub**, Git üzerine inşa edilmiş bir bulut barındırma hizmetidir.
 
-Git, bir projenin sürüm kontrolünü yönetirken, GitHub, projenin paylaşımı, işbirliği, sorun takibi ve kod incelemesi gibi ek özellikler sunar.
+Git, bir projenin sürüm kontrolünü yönetirken, **GitHub**, projenin paylaşımı, işbirliği, sorun takibi ve kod incelemesi gibi ek özellikler sunar.
 
-**Star:** GitHub'daki bir projeyi beğenmek ve ileride kolayca erişmek istediğinizi belirtmek için kullanılan bir özelliktir.
+**Star:** **GitHub**'daki bir projeyi beğenmek ve ileride kolayca erişmek istediğinizi belirtmek için kullanılan bir özelliktir.
 
 **Explore:** İlgi alanlarınıza göre önerilen projeleri ve popüler projeleri gösteren bir özelliktir.
 
@@ -544,29 +555,29 @@ git push -u origin main
 
 Bu sayede, git push komutunu çağırdığınızda, Git otomatik olarak belirlenen yer işaretçisine göre işlem yapar.
 
-### **Pull Request**
+### **Pull request**
 
-Pull request (PR), bir yazılım projesinde değişiklik yapmak isteyen bir kullanıcının, projenin sahibi ya da ekibinin dikkatini çekmek ve değişikliklerinin ana kod tabanına (master dalı gibi) birleştirilmesini talep etmek için yaptığı bir istektir.
+**Pull request** **(PR)**, bir yazılım projesinde değişiklik yapmak isteyen bir kullanıcının, projenin sahibi ya da ekibinin dikkatini çekmek ve değişikliklerinin ana kod tabanına (master dalı gibi) birleştirilmesini talep etmek için yaptığı bir istektir.
 
-Bir kullanıcı, projenin bir kopyasını (fork) oluşturarak değişikliklerini yapar ve bu değişiklikleri commit ederek kendi fork dalında saklar. Daha sonra, bu değişiklikleri orijinal projenin sahibine göstermek için bir pull request açar. Pull request, değişikliklerin açıkça açıklandığı bir iletişim kutusu görevi görür ve projenin sahibi ya da ekibi tarafından incelenir.
+Bir kullanıcı, projenin bir kopyasını (fork) oluşturarak değişikliklerini yapar ve bu değişiklikleri commit ederek kendi fork dalında saklar. Daha sonra, bu değişiklikleri orijinal projenin sahibine göstermek için bir **Pull request** açar. **Pull request**, değişikliklerin açıkça açıklandığı bir iletişim kutusu görevi görür ve projenin sahibi ya da ekibi tarafından incelenir.
 
-Eğer değişiklikler onaylanırsa, projenin sahibi ya da ekibi, pull request'i kabul ederek değişiklikleri ana kod tabanına (master dalı gibi) birleştirir. Bu sayede, projeye katkıda bulunan herkesin değişiklikleri, ana kod tabanına dahil edilerek projenin geliştirilmesine katkı sağlar.
+Eğer değişiklikler onaylanırsa, projenin sahibi ya da ekibi, **Pull request**'i kabul ederek değişiklikleri ana kod tabanına (master dalı gibi) birleştirir. Bu sayede, projeye katkıda bulunan herkesin değişiklikleri, ana kod tabanına dahil edilerek projenin geliştirilmesine katkı sağlar.
 
-Pull requestler, açık kaynak projelerinde çok yaygın olarak kullanılır ve topluluk tabanlı projelerin geliştirilmesinde önemli bir rol oynar.
+**Pull request**ler, açık kaynak projelerinde çok yaygın olarak kullanılır ve topluluk tabanlı projelerin geliştirilmesinde önemli bir rol oynar.
 
-Örneğin, açık kaynak bir proje olan "MyAwesomeProject" üzerinde çalışıyorsunuz ve bir hata fark ettiniz. Bu hatayı düzeltmek istiyorsunuz ve değişikliğinizi proje sahibine göstermek için bir pull request açacaksınız.
+Örneğin, açık kaynak bir proje olan "MyAwesomeProject" üzerinde çalışıyorsunuz ve bir hata fark ettiniz. Bu hatayı düzeltmek istiyorsunuz ve değişikliğinizi proje sahibine göstermek için bir **Pull request** açacaksınız.
 
 İşlem adımları şu şekilde olabilir:
 
-1. Projenin GitHub sayfasına gidin ve projeyi fork edin (kendi hesabınıza bir kopya oluşturun).
+1. Projenin **GitHub** sayfasına gidin ve projeyi fork edin (kendi hesabınıza bir kopya oluşturun).
 2. Kendi fork dalınızı (branch) oluşturun ve hata düzeltmesini yapın.
-3. Değişikliklerinizi commit edin ve GitHub hesabınıza yükleyin.
-4. GitHub sayfasından, pull request (PR) düğmesine tıklayın ve değişikliklerinizi açıklayan bir açıklama yazın.
+3. Değişikliklerinizi commit edin ve **GitHub** hesabınıza yükleyin.
+4. **GitHub** sayfasından, **Pull request** (PR) düğmesine tıklayın ve değişikliklerinizi açıklayan bir açıklama yazın.
 5. PR'nizi projenin sahibine gönderin.
 6. Projenin sahibi veya ekibi, PR'nizi inceleyecek ve hata düzeltmesinin kabul edilip edilmeyeceğine karar verecek.
 7. Eğer değişiklikler kabul edilirse, projenin sahibi veya ekibi değişiklikleri ana kod tabanına (master dalı gibi) birleştirir ve sizin değişiklikleriniz de projede yer almış olur.
 
-Bu şekilde, pull request işlemi sayesinde, herhangi bir projeye katkıda bulunabilirsiniz ve bu projelerin geliştirilmesine katkıda bulunabilirsiniz.
+Bu şekilde, **Pull request** işlemi sayesinde, herhangi bir projeye katkıda bulunabilirsiniz ve bu projelerin geliştirilmesine katkıda bulunabilirsiniz.
 
 Not: Upstream branch'leri görmek için `git branch -r` komutunu kullanabilirsiniz.
 
@@ -587,15 +598,15 @@ Pull işlemi ise, uzak depodaki yeni değişiklikleri hem indirir hem de lokalde
 - `git pull` = `git fetch` + `git merge`
 - `git pull origin main`: Uzak depodaki (remote repository) "origin" adlı depodan "main" adlı dalın (branch) değişikliklerini indirerek lokal depoya (local repository) birleştirir. Yani, bu komut, uzak depodaki en güncel "main" dalındaki değişiklikleri indirir ve lokaldeki "main" dalıyla birleştirir.
 
-Kısacası, Fetch işlemi sadece uzak depodaki değişiklikleri indirirken, Pull işlemi hem indirme hem de birleştirme işlemlerini gerçekleştirir.
+Kısacası, **Fetch** işlemi sadece uzak depodaki değişiklikleri indirirken, **Pull** işlemi hem indirme hem de birleştirme işlemlerini gerçekleştirir.
 
 ### **Clone**
 
-`git clone` komutu, bir uzak depodaki (remote repository) tamamını veya belirli bir dalını (branch) kopyalamak için kullanılır. Yani, mevcut bir projenin tamamını veya bir bölümünü kopyalamak ve yerel makinede (local machine) bir kopya oluşturmak için kullanılır.
+`git clone` komutu, bir **uzak depodaki (remote repository)** tamamını veya belirli bir **dalını (branch)** kopyalamak için kullanılır. Yani, mevcut bir projenin tamamını veya bir bölümünü kopyalamak ve **yerel makinede (local machine)** bir kopya oluşturmak için kullanılır.
 
 Bu komut, uzak depodaki tüm dosyaları, tarihçeyi ve yapılandırmayı kopyalar ve lokalde yeni bir Git deposu oluşturur. Bu, projeye katılmak isteyen birisinin projeyi baştan oluşturmak yerine, mevcut bir kopyayı indirerek projede hızlıca yer almasına olanak sağlar.
 
-Örneğin, bir GitHub deposuna (repository) sahipseniz, bu komutu kullanarak yerel makinenizde bir kopya oluşturabilirsiniz:
+Örneğin, bir **GitHub** deposuna (repository) sahipseniz, bu komutu kullanarak yerel makinenizde bir kopya oluşturabilirsiniz:
 
 `git clone https://github.com/kullaniciAdi/projeAdi.git`
 
@@ -603,8 +614,10 @@ Bu komut, uzak depodaki "projeAdi" adlı depoyu indirir ve yerel makinede "proje
 
 ### **Fork**
 
-Fork, bir GitHub deposunu (repository) kopyalamanın bir yoludur. Bu işlem, bir projeye katkıda bulunmak veya kendi projenizi başlatmak için kullanışlıdır. Fork işlemi, projenin tamamını veya belirli bir dalını (branch) kopyalar ve bu kopya, kullanıcının GitHub hesabına kaydedilir.
+**Fork**, bir **GitHub** deposunu (repository) kopyalamanın bir yoludur. Bu işlem, bir projeye katkıda bulunmak veya kendi projenizi başlatmak için kullanışlıdır. **Fork** işlemi, projenin tamamını veya belirli bir dalını (branch) kopyalar ve bu kopya, kullanıcının **GitHub** hesabına kaydedilir.
 
-Fork işlemi sayesinde, bir depoya katkıda bulunmak isteyen kullanıcılar, projeyi kendi GitHub hesaplarına kopyalayabilirler. Bu kopya üzerinde değişiklikler yapabilir, yeni özellikler ekleyebilir, hataları düzeltebilir veya depoyu tamamen farklı bir yöne yönlendirebilirler. Kullanıcılar, kendi hesaplarındaki kopyaları üzerinde çalıştıkları değişiklikleri ve geliştirmeleri, orijinal projenin sahibine yönlendirmek için Pull Request işlemi kullanabilirler.
+**Fork** işlemi sayesinde, bir depoya katkıda bulunmak isteyen kullanıcılar, projeyi kendi **GitHub** hesaplarına kopyalayabilirler. Bu kopya üzerinde değişiklikler yapabilir, yeni özellikler ekleyebilir, hataları düzeltebilir veya depoyu tamamen farklı bir yöne yönlendirebilirler.
 
-Fork işlemi, bir projeye katkıda bulunmak isteyenlerin, projenin sahibinden izin almalarına gerek kalmadan, projede değişiklik yapmalarına ve bu değişiklikleri paylaşmalarına olanak sağlar. Bu, açık kaynaklı projeler için oldukça yararlı bir işlemdir, çünkü projeyi geliştirmek isteyen herkesin kolayca katkıda bulunabilmesini sağlar.
+Kullanıcılar, kendi hesaplarındaki kopyaları üzerinde çalıştıkları değişiklikleri ve geliştirmeleri, orijinal projenin sahibine yönlendirmek için **Pull Request** işlemi kullanabilirler.
+
+**Fork** işlemi, bir projeye katkıda bulunmak isteyenlerin, projenin sahibinden izin almalarına gerek kalmadan, projede değişiklik yapmalarına ve bu değişiklikleri paylaşmalarına olanak sağlar. Bu, açık kaynaklı projeler için oldukça yararlı bir işlemdir, çünkü projeyi geliştirmek isteyen herkesin kolayca katkıda bulunabilmesini sağlar.
