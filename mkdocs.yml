@@ -1,0 +1,29 @@
+site_name: Git_ve_Github_Rehberi
+site_description: Git_ve_Github_Rehberi
+site_author: mkdemir
+site_url: https://mkdemir.github.io/Git_ve_Github_Rehberi/
+dev_addr: 127.0.0.1:9000
+theme:
+  name: 'material'
+  language: 'tr'é
+  features:
+    - navigation.indexes
+    - navigation.top
+    - toc.integrate
+repo_name: mkdemir/Git_ve_Github_Rehberi
+repo_url: https://github.com/mkdemir/Git_ve_Github_Rehberi
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - toc
+  - extra
+  - codehilite
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed
+  - pymdownx.magiclink
+nav:
+  - "İçindekiler": "index.md"
+  - "Git ve Github Kullanımı":
+    - "Tanıtım, Öne Çıkan Kısımları": "README.md"
