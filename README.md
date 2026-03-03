@@ -643,6 +643,8 @@ Pull işlemi ise, uzak depodaki yeni değişiklikleri hem indirir hem de lokalde
 - `git pull` = `git fetch` + `git merge`
 - `git pull origin main`: Uzak depodaki (remote repository) "origin" adlı depodan "main" adlı dalın (branch) değişikliklerini indirerek lokal depoya (local repository) birleştirir. Yani, bu komut, uzak depodaki en güncel "main" dalındaki değişiklikleri indirir ve lokaldeki "main" dalıyla birleştirir.
 
+**git pull --rebase:** Uzak depodaki değişiklikleri alırken yerel commit'lerinizi uzak depodaki yeni commit'lerin "üzerine" taşır. Normal `git pull` işlemi bir "merge commit" oluştururken, `--rebase` kullanmak çok daha temiz ve doğrusal (linear) bir Git geçmişi sağlar. Özellikle ekip çalışmalarında commit kalabalığını önlemek için sıkça tercih edilir.
+
 Kısacası, **Fetch** işlemi sadece uzak depodaki değişiklikleri indirirken, **Pull** işlemi hem indirme hem de birleştirme işlemlerini gerçekleştirir.
 
 ### **Clone**
