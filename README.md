@@ -44,6 +44,7 @@
    - [Fetch ve Pull](#fetch-ve-pull)
    - [Clone](#clone)
    - [Fork](#fork)
+   - [GitHub Pages](#github-pages)
 
 ## 1. Giriş
 
@@ -668,3 +669,17 @@ Bu komut, uzak depodaki "projeAdi" adlı depoyu indirir ve yerel makinede "proje
 Kullanıcılar, kendi hesaplarındaki kopyaları üzerinde çalıştıkları değişiklikleri ve geliştirmeleri, orijinal projenin sahibine yönlendirmek için **Pull Request** işlemi kullanabilirler.
 
 **Fork** işlemi, bir projeye katkıda bulunmak isteyenlerin, projenin sahibinden izin almalarına gerek kalmadan, projede değişiklik yapmalarına ve bu değişiklikleri paylaşmalarına olanak sağlar. Bu, açık kaynaklı projeler için oldukça yararlı bir işlemdir, çünkü projeyi geliştirmek isteyen herkesin kolayca katkıda bulunabilmesini sağlar.
+
+### **GitHub Pages**
+
+**GitHub Pages**, GitHub üzerinden statik web sitelerini (HTML, CSS ve JavaScript) ücretsiz olarak barındırmanıza olanak tanıyan bir hizmettir. Projenizi doğrudan bir URL üzerinden (örneğin: `kullaniciadi.github.io/projeadi`) yayına almak için kullanılır.
+
+**Kurulum Adımları:**
+
+1.  GitHub üzerindeki deponuzun (repository) **Settings** sekmesine gidin.
+2.  Sol menüden **Pages** seçeneğine tıklayın.
+3.  **Build and deployment** bölümünde, kaynağı (Branch) seçin (genellikle `main` veya `gh-pages`).
+4.  **Save** butonuna tıklayın.
+5.  Birkaç dakika içinde web siteniz GitHub tarafından yayınlanacaktır. Sayfanın üst kısmında sitenizin adresini görebilirsiniz.
+
+GitHub Pages; portfolyo siteleri, proje dokümantasyonları ve kişisel bloglar için harika bir çözümdür.
