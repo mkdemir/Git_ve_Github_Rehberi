@@ -1,4 +1,4 @@
-# Git ve Github Rehberi
+# Git ve GitHub Rehberi
 
 <p align="center">
    <img src="./images/git-github-banner.png" alt="Görüntü açıklaması" width="600" />
@@ -6,16 +6,19 @@
 
 ## İçindekiler
 
-1. [Giriş](#1giriş)
+1. [Giriş](#1-giriş)
    - [Git Nedir](#git-nedir)
-   - [Popüler VSC Sistemler](#popüler-vsc-versiyon-control-system-sistemleri)
+   - [Popüler VCS Sistemleri](#popüler-vcs-versiyon-control-system-sistemleri)
    - [Git'in Kurulumu](#gitin-kurulumu)
    - [Temel Terminal Komutları](#temel-terminal-komutları)
    - [Kullanıcı Adı ve Email Tanımlama](#kullanıcı-adı-ve-email-tanımlama)
+   - [Git Config List](#git-config-list)
 
 2. [Git Temelleri](#2-git-temelleri)
    - [Önemli Git Terimleri](#önemli-git-terimleri)
    - [İlk Commit](#i̇lk-commit)
+   - [Git Log Gelişmiş Kullanımı](#git-log-gelişmiş-kullanımı)
+   - [Git Reflog](#git-reflog)
 
 3. [Git Branch](#3-git-branch)
    - [HEAD Nedir](#head-nedir)
@@ -30,19 +33,21 @@
    - [Reset ve Revert](#reset-ve-revert)
    - [Git Diff](#git-diff)
    - [Rebase](#rebase)
+   - [Git Cherry-pick](#git-cherry-pick)
+   - [Git Aliases](#git-aliases)
 
-5. [Github](#5-github)
-   - [Github Nedir](#github-nedir)
-   - [Git ve Github Arasındaki Farklar](#git-vegithubarasındaki-farklar)
-   - [Github İle Repo](#github-i̇lk-repo)
+5. [GitHub](#5-github)
+   - [GitHub Nedir?](#github-nedir)
+   - [Git ve GitHub Arasındaki Farklar](#git-ve-github-arasındaki-farklar)
+   - [GitHub İle İlk Repo](#github-i̇lk-repo)
    - [Git Push](#git-push)
    - [Fetch ve Pull](#fetch-ve-pull)
    - [Clone](#clone)
    - [Fork](#fork)
 
-## 1.Giriş
+## 1. Giriş
 
-**Git** ve **Github**, günümüzde yazılım geliştirme alanında en popüler araçlar arasında yer almaktadır. Bu araçlar, kod yönetimi, işbirliği, proje yönetimi ve sürüm kontrolü gibi alanlarda kullanıcılarına birçok avantaj sağlamaktadır. Bu dökümanda, **Git ve Github**'ın ne olduğu, nasıl kullanıldığı ve neden önemli oldukları hakkında temel bilgileri vermeyi amaçlamaktadır.
+**Git** ve **GitHub**, günümüzde yazılım geliştirme alanında en popüler araçlar arasında yer almaktadır. Bu araçlar, kod yönetimi, işbirliği, proje yönetimi ve sürüm kontrolü gibi alanlarda kullanıcılarına birçok avantaj sağlamaktadır. Bu döküman, **Git ve GitHub**'ın ne olduğu, nasıl kullanıldığı ve neden önemli oldukları hakkında temel bilgileri vermeyi amaçlamaktadır.
 
 ### **Git Nedir**
 
@@ -52,33 +57,33 @@
 
 **Git**, **komut satırı arayüzü (Command Line Interface)** veya **grafik arayüzü** ile kullanılabilir.
 
-- Günlük hayatımızda oynadığımız bilgisayar oyunlarındaki **Save Point**'leri git'teki commit'lere benzetebiliriz.
+- Günlük hayatımızda oynadığımız bilgisayar oyunlarındaki **Save Point**'leri Git'teki commit'lere benzetebiliriz.
 - **Git**, **Linus Torvalds** tarafından geliştirilmiştir.
-- **Git**, birçok işletim sistemi üzerinde çalımaktadır.
-- Tamamen **açık kaynaklı (open source)** ücretsiz bir şekilde kullanılabiliniyor.
+- **Git**, birçok işletim sistemi üzerinde çalışmaktadır.
+- Tamamen **açık kaynaklı (open source)** ücretsiz bir şekilde kullanılabiliyor.
 - **Git** artık bir "**Endüstri Standardı**" olarak kullanılmaktadır.
 
-**Github:** Bir portal, **git** repolarımızı yani projelerimizi sakladığımız bir birlerimiz ile paylaşabildiğimiz onun içerisinde interaktif işler yapabildiğimiz bir portal
+**GitHub:** Bir portal, **Git** repolarımızı yani projelerimizi sakladığımız birbirimiz ile paylaşabildiğimiz onun içerisinde interaktif işler yapabildiğimiz bir portal
 
-### **Popüler VSC (Versiyon Control System) Sistemleri**
+### **Popüler VCS (Version Control System) Sistemleri**
 
 Birçok versiyon kontrol sistemi vardır. En popüler versiyon kontrol sistemleri şunlardır:
 
-1. **Git:** En popüler ve yaygın olarak kullanılan bir versiyon kontrol sistemidir. Birçok açık kaynaklı projede kullanılır.
+1.  **Git:** En popüler ve yaygın olarak kullanılan bir versiyon kontrol sistemidir. Birçok açık kaynaklı projede kullanılır.
 
-2. **SVN (Subversion):** Merkezi bir versiyon kontrol sistemidir. Tek bir merkezi sunucu, tüm değişikliklerin tutulduğu bir merkezi havuz olarak kullanılır.
+2.  **SVN (Subversion):** Merkezi bir versiyon kontrol sistemidir. Tek bir merkezi sunucu, tüm değişikliklerin tutulduğu bir merkezi havuz olarak kullanılır.
 
-3. **Mercurial:** Dağıtık bir versiyon kontrol sistemidir. **Git** ile benzer özelliklere sahiptir.
+3.  **Mercurial:** Dağıtık bir versiyon kontrol sistemidir. **Git** ile benzer özelliklere sahiptir.
 
-4. **Perforce:** Genellikle büyük ölçekli ticari yazılımlarda kullanılır. Merkezi bir versiyon kontrol sistemidir.
+4.  **Perforce:** Genellikle büyük ölçekli ticari yazılımlarda kullanılır. Merkezi bir versiyon kontrol sistemidir.
 
-5. **CVS (Concurrent Versions System):** Eski bir merkezi versiyon kontrol sistemidir. Artık pek kullanılmamaktadır.
+5.  **CVS (Concurrent Versions System):** Eski bir merkezi versiyon kontrol sistemidir. Artık pek kullanılmamaktadır.
 
-6. **TFS (Team Foundation Server):** Microsoft tarafından geliştirilmiş bir merkezi versiyon kontrol sistemidir.
+6.  **TFS (Team Foundation Server):** Microsoft tarafından geliştirilmiş bir merkezi versiyon kontrol sistemidir.
 
-7. **Bazaar:** Dağıtık bir versiyon kontrol sistemidir. Özellikle açık kaynaklı projelerde kullanılır.
+7.  **Bazaar:** Dağıtık bir versiyon kontrol sistemidir. Özellikle açık kaynaklı projelerde kullanılır.
 
-8. **Darcs:** Dağıtık bir versiyon kontrol sistemidir. Basitliği ve kullanım kolaylığı ile bilinir.
+8.  **Darcs:** Dağıtık bir versiyon kontrol sistemidir. Basitliği ve kullanım kolaylığı ile bilinir.
 
 Bu sadece birkaç örnek olup, daha pek çok versiyon kontrol sistemi mevcuttur.
 
@@ -86,22 +91,22 @@ Bu sadece birkaç örnek olup, daha pek çok versiyon kontrol sistemi mevcuttur.
 
 **Windows için:**
 
-1. **Git**'i [Git Resmi Sitesi](https://git-scm.com/downloads) adresinden indirin.
-2. İndirme işlemi tamamlandıktan sonra **Git Bash** ile kullanabilirsiniz.
+1.  **Git**'i [Git Resmi Sitesi](https://git-scm.com/downloads) adresinden indirin.
+2.  İndirme işlemi tamamlandıktan sonra **Git Bash** ile kullanabilirsiniz.
 
 **Mac veya Linux için:**
 
-- Mac (Homebrew): `sudo brew install git`
-- Debian/Ubuntu: `sudo apt install git`
-- Arch Linux: `sudo pacman -S git`
-- Centos: `sudo yum install git`
+-   Mac (Homebrew): `sudo brew install git`
+-   Debian/Ubuntu: `sudo apt install git`
+-   Arch Linux: `sudo pacman -S git`
+-   Centos: `sudo yum install git`
 
 **Git**'i yükledikten sonra, doğru bir şekilde kurulup kurulmadığını test etmek için şu adımları uygulayabilirsiniz:
 
-1. Konsol, kabuk veya uçbirim gibi komut satırı arayüzünü açın.
-2. `git --version` komutunu girin.
-3. Ekranda **Git**'in yüklü versiyonu ile ilgili bilgileri görmelisiniz.
-4. Eğer ekranda versiyon bilgisi göremediyseniz, tekrar kurulum adımlarını kontrol edin.
+1.  Konsol, kabuk veya uçbirim gibi komut satırı arayüzünü açın.
+2.  `git --version` komutunu girin.
+3.  Ekranda **Git**'in yüklü versiyonu ile ilgili bilgileri görmelisiniz.
+4.  Eğer ekranda versiyon bilgisi göremediyseniz, tekrar kurulum adımlarını kontrol edin.
 
 **Git**'in hangi sürümünü kullanıyor olduğunuzu öğrenmek için `git --version` komutunu kullanabilirsiniz. Bu komut, yüklü olan **Git** sürümünün bilgisini size gösterir. Örneğin, eğer **Git**'in 2.34.1 sürümünü kullanıyorsanız, `git --version` komutunu çalıştırdığınızda ekranda şu şekilde bir çıktı görebilirsiniz:
 
@@ -114,24 +119,24 @@ Bu bilgi, **Git**'in hangi sürümünü kullandığınızı bilmek için oldukç
 
 ### **Temel Terminal Komutları**
 
-- `ls (List directory contents)`: Bulunduğun dizindeki tüm içerikleri göster.
-- `ls -la (List directory contents and list all)`: Bulunduğun dizideki tüm içerikleri ve gizli içerikleri liste olarka göster.
-- `cd (Change Directory)`: Dizin değiştir.
-- `pwd: (Print Working Directory)`: Çalıştığın dizini göster.
-- `mkdir (Make Directory)`: Dizin oluştur.
-- `clear`: Ekranı temizle.
-- `touch` : Dosya oluşturma.
-- `rm (Remove)` : Silme.
-- `rm -rf (Remove recursive force delete directory)`: Belirtilen dizin içindeki dosya ve dizinleri silmesi ve kullanıcıya onay için soru sormadan silinmesi
-- `cp (Copy)`: Dosya veya dizinleri kopyalamak için kullanılır.
-- `mv (Move)`: Dosya veya dizinleri taşımak veya yeniden adlandırmak için kullanılır.
-- `cat (Concatenate)`: Dosyanın içeriğini ekrana yazdırmak için kullanılır.
-- `head`: Dosyanın ilk birkaç satırını görüntülemek için kullanılır.
-- `tail`: Dosyanın son birkaç satırını görüntülemek için kullanılır.
-- `grep`: Belirtilen bir metni içeren satırları bulmak için kullanılır.
-- `chmod (Change Mode)`: Dosya veya dizinin izinlerini değiştirmek için kullanılır.
-- `sudo (Superuser Do)`: Root kullanıcısı olarak bir komut çalıştırmak için kullanılır.
-- `history`: Daha önce kullanılan komutları listeler.
+-   `ls (List directory contents)`: Bulunduğun dizindeki tüm içerikleri göster.
+-   `ls -la (List directory contents and list all)`: Bulunduğun dizideki tüm içerikleri ve gizli içerikleri liste olarak göster.
+-   `cd (Change Directory)`: Dizin değiştir.
+-   `pwd: (Print Working Directory)`: Çalıştığın dizini göster.
+-   `mkdir (Make Directory)`: Dizin oluştur.
+-   `clear`: Ekranı temizle.
+-   `touch` : Dosya oluşturma.
+-   `rm (Remove)` : Silme.
+-   `rm -rf (Remove recursive force delete directory)`: Belirtilen dizin içindeki dosya ve dizinleri silmesi ve kullanıcıya onay için soru sormadan silinmesi
+-   `cp (Copy)`: Dosya veya dizinleri kopyalamak için kullanılır.
+-   `mv (Move)`: Dosya veya dizinleri taşımak veya yeniden adlandırmak için kullanılır.
+-   `cat (Concatenate)`: Dosyanın içeriğini ekrana yazdırmak için kullanılır.
+-   `head`: Dosyanın ilk birkaç satırını görüntülemek için kullanılır.
+-   `tail`: Dosyanın son birkaç satırını görüntülemek için kullanılır.
+-   `grep`: Belirtilen bir metni içeren satırları bulmak için kullanılır.
+-   `chmod (Change Mode)`: Dosya veya dizinin izinlerini değiştirmek için kullanılır.
+-   `sudo (Superuser Do)`: Root kullanıcısı olarak bir komut çalıştırmak için kullanılır.
+-   `history`: Daha önce kullanılan komutları listeler.
 
 Bu komutlar, bir dosya sistemiyle çalışırken oldukça yararlıdır. Tabii ki, birçok başka terminal komutu da vardır, ancak bunlar en sık kullanılanlarıdır.
 
@@ -145,29 +150,39 @@ Kullanıcı adınızı **Git**'in sistemine kayıt etmek için:
 
 > `git config --global user.name "mkdemir"`
 >
-> - `config`: Git konfigürasyon ayarlarını değiştirmek için kullanılır.
-> - `--global`: Bu komutu kullandığınızda, ayarların her yerde geçerli olacağı anlamına gelir.
-> - `user.name`: User adını değiştir.
-> - `git config user.name`: Kullanıcı adınızı kontrol etmek için bu komutu kullanabilirsiniz.
+> -   `config`: Git konfigürasyon ayarlarını değiştirmek için kullanılır.
+> -   `--global`: Bu komutu kullandığınızda, ayarların her yerde geçerli olacağı anlamına gelir.
+> -   `user.name`: User adını değiştir.
+> -   `git config user.name`: Kullanıcı adınızı kontrol etmek için bu komutu kullanabilirsiniz.
 
 Mail adresinizi **Git**'in sistemine kayıt etmek için:
 
->`git config --global user.email "mkdemir@mkdemir"`
+> `git config --global user.email "mkdemir@mkdemir"`
 >
-> - `user.email`: Git hesabınızda gösterilecek email adresinizi değiştirir.
-> - `git config user.email`: Email adresinizi kontrol etmek için bu komutu kullanabilirsiniz
+> -   `user.email`: Git hesabınızda gösterilecek email adresinizi değiştirir.
+> -   `git config user.email`: Email adresinizi kontrol etmek için bu komutu kullanabilirsiniz
+
+### **Git Config List**
+
+Mevcut tüm Git ayarlarınızı ve nereden geldiklerini görmek için:
+
+> `git config --list`
+
+Eğer hangi ayarın hangi dosyadan (`system`, `global`, `local`) geldiğini görmek isterseniz:
+
+> `git config --list --show-origin`
 
 Yukarıdaki adımları takip ederek kendi kullanıcı adınızı ve email adresinizi **Git** sistemine kaydedebilirsiniz.
 
 **Not:** Git Varsayılan Düzenleyicisini Değiştirme
 
-- **Git**'in varsayılan metin düzenleyicisi, genellikle **Nano** veya **Vim** gibi bir **konsol** editörüdür. Ancak, birçok kullanıcı için bu editörler kullanımı zor veya rahatsız edici olabilir. Neyse ki, **Git**'in default editör ayarlarını değiştirmek oldukça kolaydır.
+-   **Git**'in varsayılan metin düzenleyicisi, genellikle **Nano** veya **Vim** gibi bir **konsol** editörüdür. Ancak, birçok kullanıcı için bu editörler kullanımı zor veya rahatsız edici olabilir. Neyse ki, **Git**'in default editör ayarlarını değiştirmek oldukça kolaydır.
 
-- Aşağıdaki örneklerde, **Git** varsayılan editörünü değiştirmek için kullanabileceğiniz bazı komutlar verilmiştir:
+-   Aşağıdaki örneklerde, **Git** varsayılan editörünü değiştirmek için kullanabileceğiniz bazı komutlar verilmiştir:
 
-> - **Vim:** `git config --global core.editor "vim --nofork"`
-> - **Emacs:** `git config --global core.editor emacs`
-> - **Gedit (Linux):** `git config --global core.editor "gedit --wait --new-window"`
+> -   **Vim:** `git config --global core.editor "vim --nofork"`
+> -   **Emacs:** `git config --global core.editor emacs`
+> -   **Gedit (Linux):** `git config --global core.editor "gedit --wait --new-window"`
 
 Yukarıdaki komutları kullanarak, Git'in default editör ayarlarını değiştirerek kendi tercih ettiğiniz metin düzenleyicisini kullanabilirsiniz.
 
@@ -181,19 +196,19 @@ Yukarıdaki komutları kullanarak, Git'in default editör ayarlarını değişti
 
 ### **Önemli Git Terimleri**
 
-- **Commit:** Git ile yapılan değişikliklerin kaydedildiği bir işlemdir. Bu işlem sayesinde herhangi bir zamanda geriye dönülerek değişiklikler eski haline getirilebilir.
+-   **Commit:** Git ile yapılan değişikliklerin kaydedildiği bir işlemdir. Bu işlem sayesinde herhangi bir zamanda geriye dönülerek değişiklikler eski haline getirilebilir.
 
-- **Branch:** Projelerin farklı dallara ayrılarak geliştirilebilmesini sağlayan bir özelliktir. Bu sayede projenin farklı özellikleri ayrı ayrı geliştirilebilir ve sonrasında birleştirebiliriz.
+-   **Branch:** Projelerin farklı dallara ayrılarak geliştirilebilmesini sağlayan bir özelliktir. Bu sayede projenin farklı özellikleri ayrı ayrı geliştirilebilir ve sonrasında birleştirebiliriz.
 
-- **Repository:** Git'in başlatıldığı klasördür. Bu klasördeki dosyalar ve değişiklikler Git ile kontrol altına alınır.
+-   **Repository (Depo):** Git'in başlatıldığı klasördür. Bu klasördeki dosyalar ve değişiklikler Git ile kontrol altına alınır.
 
-- **Working Directory (Çalışma Dizini):** Bu, projenin bulunduğu klasördür ve tüm dosyalar burada saklanır. Bu dizindeki dosyaları değiştirir veya yeni dosyalar eklersiniz.
+-   **Working Directory (Çalışma Dizini):** Bu, projenin bulunduğu klasördür ve tüm dosyalar burada saklanır. Bu dizindeki dosyaları değiştirir veya yeni dosyalar eklersiniz.
 
-- **Index - Staging Area:** Bu alana bazen *"sahne"* denir. Bu alanda değişiklik yaptığınız dosyalar bulunur, ancak henüz projenin bir parçası değillerdir. Bu, değişiklikleri daha sonra kaydetmek üzere hazırlamak için kullanılan bir ara bölgedir. Yani, dosyalarda yaptığınız değişiklikleri, Git'e kaydetmek istediğinizde buraya eklersiniz.
+-   **Index - Staging Area:** Bu alana bazen *"sahne"* denir. Bu alanda değişiklik yaptığınız dosyalar bulunur, ancak henüz projenin bir parçası değillerdir. Bu, değişiklikleri daha sonra kaydetmek üzere hazırlamak için kullanılan bir ara bölgedir. Yani, dosyalarda yaptığınız değişiklikleri, Git'e kaydetmek istediğinizde buraya eklersiniz.
 
-- **Local Repository:** Bu, Git'in projenin tüm geçmiş sürümlerini ve değişikliklerini sakladığı yere denir. Yani, burası dosyalardaki değişiklikleri kaydettiğiniz yerdir. Local Repository, proje dizininde .git adı verilen bir klasör içinde saklanır. Bu klasör, projenin tam tarihçesini ve Git'in projeyle ilgili diğer verilerini içerir.
+-   **Local Repository:** Bu, Git'in projenin tüm geçmiş sürümlerini ve değişikliklerini sakladığı yere denir. Yani, burası dosyalardaki değişiklikleri kaydettiğiniz yerdir. Local Repository, proje dizininde .git adı verilen bir klasör içinde saklanır. Bu klasör, projenin tam tarihçesini ve Git'in projeyle ilgili diğer verilerini içerir.
 
-- **Upstream Rrepository:** Bir projenin orijinal kaynak kod deposudur. Bu genellikle bir açık kaynak yazılım projesi için bir **GitHub** deposu veya benzeri bir git barındırma servisi olabilir. Fork işlemi yapıldığında, kullanıcının hesabında bir kopya oluşturulur ve bu kopya, orijinal proje ile senkronize edilebilir. Senkronize edildiğinde, kullanıcının kopyası, değişikliklerin yapılmasına, commit edilmesine ve bir **Pull request** gönderilmesine izin verir. Upstream repository, orijinal proje ile senkronize edildiğinde, bu değişikliklerin orijinal projeye dahil edilmesini sağlar. Bu nedenle upstream repository, bir projenin yönetimi ve katkıda bulunulması için önemlidir.
+-   **Upstream Repository (Yukarı Akış Deposu):** Bir projenin orijinal kaynak kod deposudur. Bu genellikle bir açık kaynak yazılım projesi için bir **GitHub** deposu veya benzeri bir Git barındırma servisi olabilir. Fork işlemi yapıldığında, kullanıcının hesabında bir kopya oluşturulur ve bu kopya, orijinal proje ile senkronize edilebilir. Senkronize edildiğinde, kullanıcının kopyası, değişikliklerin yapılmasına, commit edilmesine ve bir **Pull request** gönderilmesine izin verir. Upstream repository, orijinal proje ile senkronize edildiğinde, bu değişikliklerin orijinal projeye dahil edilmesini sağlar. Bu nedenle upstream repository, bir projenin yönetimi ve katkıda bulunulması için önemlidir.
 
 **Yazılanları Görselleştirirsek:**
 
@@ -214,15 +229,15 @@ nothing to commit (create/copy files and use "git add" to track) # Commit edilec
 
 `git init`: Bir klasöre Git deposu eklemek için kullanılan bir komuttur. Bu komut, mevcut bir klasörü veya boş bir klasörü bir **Git** deposuna dönüştürür.
 
-- Bu komutu kullanarak bir klasöre **Git** deposu ekledikten sonra, dosyaları **stagelamak (stage)**, **commit (commit)** etmek ve diğer **Git** komutlarını kullanarak değişiklikleri kontrol etmeye başlayabilirsiniz.
+-   Bu komutu kullanarak bir klasöre **Git** deposu ekledikten sonra, dosyaları **stagelamak (stage)**, **commit (commit)** etmek ve diğer **Git** komutlarını kullanarak değişiklikleri kontrol etmeye başlayabilirsiniz.
 
-- master or main branch Git'in bir projeye başlatılması için kullanılır. Bu komut ile projenin bulunduğu klasöre .git adında bir klasör oluşturulur ve Git projeye başlatılmış olur.
+-   master or main branch Git'in bir projeye başlatılması için kullanılır. Bu komut ile projenin bulunduğu klasöre .git adında bir klasör oluşturulur ve Git projeye başlatılmış olur.
 
 ### **İlk Commit**
 
 Genel terimleri gördüğümüze göre küçük bir örnek yaparak başlayalım.
 
-- Bir dizin oluşturuyoruz ve içerisine girip `git init` komutunu çalıştırıyoruz. Bu dizin içine `think.txt` adlı bir dosya oluşturduktan sonra `git status` ile kontrol ediyoruz.
+-   Bir dizin oluşturuyoruz ve içerisine girip `git init` komutunu çalıştırıyoruz. Bu dizin içine `think.txt` adlı bir dosya oluşturduktan sonra `git status` ile kontrol ediyoruz.
 
 ```bash
 ➜  Think git:(master) ✗ git status
@@ -237,11 +252,11 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-- Burada dosyayı oluşturduğunu ve **Untracked** yani takip edilmediğini söylüyor.
+-   Burada dosyayı oluşturduğunu ve **Untracked** yani takip edilmediğini söylüyor.
 
-- `git add think.txt` diyerek dosyanın takip edilmesini sağladık.
+-   `git add think.txt` diyerek dosyanın takip edilmesini sağladık.
 
-- `git commit -m "First Commit"` diyerek dosyayı commit'lemiş olduk.
+-   `git commit -m "First Commit"` diyerek dosyayı commit'lemiş olduk.
 
 ```bash
 ➜  Think git:(master) ✗ git commit -m "First Commit"
@@ -252,13 +267,28 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 **Not:** `git commit --amend -m "New commit message."`: Commit mesajını yanlış yazdım geri dönmek için
 
-- İlk commitimizi başarılı bir şekilde attık.
+-   İlk commitimizi başarılı bir şekilde attık.
 
-- `git log`: Git versiyon kontrol sisteminde yapılan commitleri ve bu commitlerin detaylarını gösteren bir komuttur. Bu komut çalıştırıldığında, tarih sırasına göre tüm commitlerin listesi görüntülenir. Her bir commit, benzersiz bir kimlik numarası (hash) ile tanımlanır ve hangi branch veya tag'de olduğu, kimin yaptığı, ne zaman yapıldığı, ne kadar değişiklik yapıldığı gibi detaylar da görüntülenebilir.
+-   `git log`: Git versiyon kontrol sisteminde yapılan commitleri ve bu commitlerin detaylarını gösteren bir komuttur. Bu komut çalıştırıldığında, tarih sırasına göre tüm commitlerin listesi görüntülenir. Her bir commit, benzersiz bir kimlik numarası (hash) ile tanımlanır ve hangi branch veya tag'de olduğu, kimin yaptığı, ne zaman yapıldığı, ne kadar değişiklik yapıldığı gibi detaylar da görüntülenebilir.
 
-  - `(HEAD -> master)` güncel içerisinde bulunduğumuz branch'i referans alır genelde, genelde de en son commiti söyler bize
+    -   `(HEAD -> master)` güncel içerisinde bulunduğumuz branch'i referans alır genelde, genelde de en son commiti söyler bize
 
-- `.gitignore`: Git'in belirtilen dosyaları görmezden gelmesine izin veren bir dosyadır. Bu dosya, Git projesindeki belirli dosyaların veya dosya türlerinin depolanmaması veya takip edilmemesi gerektiği durumlarda kullanılır. Gitignore dosyası, proje kök dizinine yerleştirilir ve adı .gitignore olarak kaydedilir. Bu dosyaya eklenen öğeler, Git'in bunları takip etmesini veya depolamasını engeller. Örneğin, .gitignore dosyasına "node_modules" yazarak, Git'in bu klasörü takip etmesi engellenir ve böylece projenin boyutu azaltılır ve depolama alanı tasarrufu sağlanır. Gitignore dosyaları, farklı diller ve projeler için önceden hazırlanmış şablonlar (template) içeren Gitignore.io gibi kaynaklardan da indirilebilir.
+-   `.gitignore`: Git'in belirtilen dosyaları görmezden gelmesine izin veren bir dosyadır. Bu dosya, Git projesindeki belirli dosyaların veya dosya türlerinin depolanmaması veya takip edilmemesi gerektiği durumlarda kullanılır. Gitignore dosyası, proje kök dizinine yerleştirilir ve adı .gitignore olarak kaydedilir. Bu dosyaya eklenen öğeler, Git'in bunları takip etmesini veya depolamasını engeller. Örneğin, .gitignore dosyasına "node_modules" yazarak, Git'in bu klasörü takip etmesi engellenir ve böylece projenin boyutu azaltılır ve depolama alanı tasarrufu sağlanır. Gitignore dosyaları, farklı diller ve projeler için önceden hazırlanmış şablonlar (template) içeren Gitignore.io gibi kaynaklardan da indirilebilir.
+
+### **Git Log Gelişmiş Kullanımı**
+
+`git log` komutunu daha okunaklı ve detaylı hale getirmek için çeşitli parametreler kullanabiliriz:
+
+-   `git log --oneline`: Her commit'i tek bir satırda özetler.
+-   `git log --graph --oneline --all`: Proje geçmişini dallanmalarla birlikte görsel bir grafik olarak gösterir.
+-   `git log -n 5`: Sadece son 5 commit'i gösterir.
+
+### **Git Reflog**
+
+**Reflog**, Git'in yerel deponuzdaki HEAD referansının yaptığı tüm hareketleri (checkpoint) sakladığı bir günlüktür. Yanlışlıkla sildiğiniz bir commit'i veya kaybettiğiniz bir değişikliği bulmanıza yarar.
+
+-   `git reflog`: Yapılan tüm işlemleri (commit, checkout, reset vb.) listeler.
+-   `git reset --hard HEAD@{index}`: Reflog'dan bulduğunuz bir noktaya geri dönmek için kullanılır.
 
 ## 3. Git Branch
 
@@ -274,10 +304,10 @@ HEAD, Git'in içinde bulunduğumuz konumu belirten bir referanstır. Genellikle 
 
 Git'te merge, farklı branch'lerin birleştirilmesini sağlayan bir işlem olarak tanımlanır.
 
-- `git branch`: Komutu ile mevcut branch'leri görüntüleyebilirsiniz.
-- `git branch <name>`: Yeni bir branch oluşturmak **`<name>`** kısmına açmak istediğimiz branch adını yazıyoruz. Örnek feat (feature) adlı bir branch açtık.
-- `git switch <branch name>`: Brach'ler arasında geçiş yapmak için kullanıyoruz.
-- `git merge feat`: Komutu ile feat branch'ini master branch'ine birleştirebilirsiniz. Bu işlem sırasında, hangi branch'in içeriğini alacağınızı belirlemek için "theirs" veya "ours" gibi parametreler de kullanabilirsiniz. (Hangisini içeriğe alacaksak onu yazmamız gerekiyor).
+-   `git branch`: Komutu ile mevcut branch'leri görüntüleyebilirsiniz.
+-   `git branch <name>`: Yeni bir branch oluşturmak **`<name>`** kısmına açmak istediğimiz branch adını yazıyoruz. Örnek feat (feature) adlı bir branch açtık.
+-   `git switch <branch name>`: Brach'ler arasında geçiş yapmak için kullanıyoruz.
+-   `git merge feat`: Komutu ile feat branch'ini master branch'ine birleştirebilirsiniz. Bu işlem sırasında, hangi branch'in içeriğini alacağınızı belirlemek için "theirs" veya "ours" gibi parametreler de kullanabilirsiniz. (Hangisini içeriğe alacaksak onu yazmamız gerekiyor).
 
 Ayrıca, merge işlemi sırasında çakışmaların oluşması durumunda, Git otomatik olarak bir "merge conflict" oluşturur ve kullanıcının bu çakışmaları çözmesini bekler. Bu çakışmaların nasıl çözüleceği, birleştirme işlemi esnasında belirlenir.
 
@@ -291,10 +321,10 @@ Fast forwarding, birleştirme işlemi sırasında, kaynak branch'in (genellikle 
 
 Örnek bir senaryo:
 
-1. git branch feat: feat branch'ini oluşturduk ve bu branch'e geçtik.
-2. echo "New line" >> file.txt: file.txt dosyasına bir satır ekledik ve commit ettik.
-3. git switch master: master branch'ine geçtik.
-4. git merge feat: feat branch'ini master ile birleştirmek istedik ve bir fast forward merge gerçekleşti. Bu nedenle, file.txt dosyasına eklediğimiz yeni satır, master branch'ine eklendi.
+1.  git branch feat: feat branch'ini oluşturduk ve bu branch'e geçtik.
+2.  echo "New line" >> file.txt: file.txt dosyasına bir satır ekledik ve commit ettik.
+3.  git switch master: master branch'ine geçtik.
+4.  git merge feat: feat branch'ini master ile birleştirmek istedik ve bir fast forward merge gerçekleşti. Bu nedenle, file.txt dosyasına eklediğimiz yeni satır, master branch'ine eklendi.
 
 Bu şekilde, fast forward merge, herhangi bir çakışma olmadan farklı branch'leri birleştirmek için kullanılabilir.
 
@@ -346,12 +376,12 @@ Ayrıca, git stash komutunu kullanırken, mevcut değişikliklerinizin yanı sı
 
 `git stash` komutu, birçok farklı parametrelerle kullanılabilir. Örneğin:
 
-- `git stash list`: Kaydedilen tüm stash'leri listeler.
-- `stash@{0}`: git stash listesi içerisindeki ilk yani en son eklenen geçici değişiklikler listesindeki kaydedilmiş çalışma dizininin (working directory) saklandığı referans adıdır.
-- `git stash apply`: En son kaydedilen stash'i geri yükler.
-- `git stash apply stash@{n}`: Belirtilen numaralı stash'i geri yükler.
-- `git stash drop`: En son kaydedilen stash'i siler.
-- `git stash drop stash@{n}`: Belirtilen numaralı stash'i siler.
+-   `git stash list`: Kaydedilen tüm stash'leri listeler.
+-   `stash@{0}`: git stash listesi içerisindeki ilk yani en son eklenen geçici değişiklikler listesindeki kaydedilmiş çalışma dizininin (working directory) saklandığı referans adıdır.
+-   `git stash apply`: En son kaydedilen stash'i geri yükler.
+-   `git stash apply stash@{n}`: Belirtilen numaralı stash'i geri yükler.
+-   `git stash drop`: En son kaydedilen stash'i siler.
+-   `git stash drop stash@{n}`: Belirtilen numaralı stash'i siler.
 
 Örnek kullanımı aşağıdaki gibi olabilir:
 
@@ -368,16 +398,16 @@ stash@{0}: WIP on feat: 1234abcd Some unfinished work
 
 Ekstra olarak restore komutunu'da kullabilirsiniz.
 
-- `git restore ilkbolum.txt`: En son commit'te ne durumda isen ben ona döndürür.
+-   `git restore ilkbolum.txt`: En son commit'te ne durumda isen ben ona döndürür.
 
 ### **Pop**
 
- Git stash pop, geçici olarak saklanan değişiklikleri geri yüklerken, Github ile ilgili bir işlem yapmaz.
+Git stash pop, geçici olarak saklanan değişiklikleri geri yüklerken, GitHub ile ilgili bir işlem yapmaz.
 
-- `git stash pop`: komutu, en son kaydedilen stash girdisini alır ve bu değişiklikleri uygular (apply) ve stash havuzundan (stash pool) kaldırır. Yani, pop işlemi stash havuzundan en son eklenen stash girdisini çıkarır ve çalışma dizinindeki değişiklikleri bu girdiye göre günceller. Yani zuladan dışarı atma
-- `git stash list`: Güncel zuladıklarımı verir.
-- `git stash apply stash@{0}`: Komutu, stash havuzundan belirli bir stash girdisini uygulamak (apply) için kullanılır. Burada {0} indeks numarası, stash havuzundaki girdinin sırasını belirtir. Örneğin, stash@{0} en son eklenen stash girdisini ifade eder.
-- `git stash clear`: Komutu ise stash havuzundaki tüm stash girdilerini siler. Bu komutu kullanmadan önce dikkatli olunması gerekir, çünkü stash havuzundaki tüm değişiklikler kalıcı olarak kaybolur.
+-   `git stash pop`: komutu, en son kaydedilen stash girdisini alır ve bu değişiklikleri uygular (apply) ve stash havuzundan (stash pool) kaldırır. Yani, pop işlemi stash havuzundan en son eklenen stash girdisini çıkarır ve çalışma dizinindeki değişiklikleri bu girdiye göre günceller. Yani zuladan dışarı atma
+-   `git stash list`: Güncel zuladıklarımı verir.
+-   `git stash apply stash@{0}`: Komutu, stash havuzundan belirli bir stash girdisini uygulamak (apply) için kullanılır. Burada {0} indeks numarası, stash havuzundaki girdinin sırasını belirtir. Örneğin, stash@{0} en son eklenen stash girdisini ifade eder.
+-   `git stash clear`: Komutu ise stash havuzundaki tüm stash girdilerini siler. Bu komutu kullanmadan önce dikkatli olunması gerekir, çünkü stash havuzundaki tüm değişiklikler kalıcı olarak kaybolur.
 
 ## 4. Geçmişe Dönme
 
@@ -397,13 +427,13 @@ Bu komut, HEAD işaretçisini master dalına yönlendirir ve tekrar master dalı
 
 ### **Reset ve Revert**
 
-Reset ve Revert, git'te geçmişe dönmek için kullanılan iki farklı yöntemdir.
+Reset ve Revert, Git'te geçmişe dönmek için kullanılan iki farklı yöntemdir.
 
-- `git reset`: Belirtilen bir commit'e geri dönmeyi sağlar ve bu işlem esnasında commit'ler silinebilir veya korunabilir.
-  - 1. Seçenek: Commit'leri sil değişiklikler kalsın
-  - 2. Seçenek: `git reset --hard  <commit id>` belirtilen commit'e kadar olan tüm commit'leri silersiniz ve geri dönüşü olmayan bir şekilde geçmişe dönersiniz. Bu nedenle, bu komutu kullanırken dikkatli olmak önemlidir.
+-   `git reset`: Belirtilen bir commit'e geri dönmeyi sağlar ve bu işlem esnasında commit'ler silinebilir veya korunabilir.
+    -   1. Seçenek: Commit'leri sil değişiklikler kalsın
+    -   2. Seçenek: `git reset --hard <commit id>` belirtilen commit'e kadar olan tüm commit'leri silersiniz ve geri dönüşü olmayan bir şekilde geçmişe dönersiniz. Bu nedenle, bu komutu kullanırken dikkatli olmak önemlidir.
 
-- `git revert <commit>`: Bu komutu kullandığınızda, belirli bir commit'i geri alırsınız ve bu işlem sonucunda yeni bir commit oluşur. Bu sayede, Git geçmişi değiştirilmez, ancak istenmeyen değişiklikler geri alınmış olur. git revert işlemi sonrasında yapılan commit, geri alınan commit'in tam tersi işlevi görür. Loglar tutuluyor. History bozmadık.
+-   `git revert <commit>`: Bu komutu kullandığınızda, belirli bir commit'i geri alırsınız ve bu işlem sonucunda yeni bir commit oluşur. Bu sayede, Git geçmişi değiştirilmez, ancak istenmeyen değişiklikler geri alınmış olur. git revert işlemi sonrasında yapılan commit, geri alınan commit'in tam tersi işlevi görür. Loglar tutuluyor. History bozmadık.
 
 Özetle, git reset komutu geçmişteki değişiklikleri silmenizi sağlar, ancak geri dönüşü olmayan bir şekilde. git revert komutu ise geçmişteki değişiklikleri geri alır ancak Git geçmişi bozulmaz ve yeni bir commit oluşur.
 
@@ -415,15 +445,15 @@ Git versiyon kontrol sistemi ile çalışırken, değişiklikleri görüntüleme
 
 Ayrıca, `git diff` komutu, farklı branch'ler arasındaki farkları, değiştirilmiş veya silinmiş dosyaları, değiştirilmiş satırları ve farklı sürümlerdeki dosyaları göstermek için kullanılabilir. Bu, birden fazla kişiyle çalışırken, değişiklikleri birbirleriyle karşılaştırma nızı ve senkronize etmenizi sağlar.
 
-- `git diff`
+-   `git diff`
 
-- `git diff HEAD`: Değiştirilmiş veya eklenen dosyaları son commit ile karşılaştırır. "HEAD" son commit'i ifade eder. Bu komutu kullanarak, son commit'ten önceki tüm değişiklikleri görebilirsiniz.
+-   `git diff HEAD`: Değiştirilmiş veya eklenen dosyaları son commit ile karşılaştırır. "HEAD" son commit'i ifade eder. Bu komutu kullanarak, son commit'ten önceki tüm değişiklikleri görebilirsiniz.
 
-- `git diff <commit1> <commit2>` : Commitler arasındaki farkı görmek için.
+-   `git diff <commit1> <commit2>` : Commitler arasındaki farkı görmek için.
 
-- `git diff <branch> <branch2>`: Branchler arasındaki farkı göster.
+-   `git diff <branch> <branch2>`: Branchler arasındaki farkı göster.
 
-- `git diff --cached` komutu da kullanılabilir. Bu, "staged" (commit öncesi hazırlanan) değişiklikleri gösterir. Yani, henüz commit etmeden önce, "git add" komutu ile hazırlanmış değişiklikleri gösterir.
+-   `git diff --cached` komutu da kullanılabilir. Bu, "staged" (commit öncesi hazırlanan) değişiklikleri gösterir. Yani, henüz commit etmeden önce, "git add" komutu ile hazırlanmış değişiklikleri gösterir.
 
 Ayrıca, git diff --color-words komutu kullanılarak, değişen kelime veya karakterlerin renkli olarak gösterilmesi sağlanabilir. Bu, değişiklikleri daha ayrıntılı ve kolay anlaşılır hale getirir.
 
@@ -435,32 +465,47 @@ Ayrıca, git diff --color-words komutu kullanılarak, değişen kelime veya kara
 
 Git'te "rebase" komutu, bir dalı diğerine eklemek için kullanılır ve birleştirme işlemi yaparken diğer dalın değişiklikleri geçerli dala uygulanır. Bu, daha temiz bir Git geçmişi sağlar ve uzun süreli projelerde sıkça kullanılır. Örnek kullanım: git rebase branch-name.
 
-- `git switch feat`
+-   `git switch feat`
 
-- `git rebase master` : Ama feat'in içerisinde çalıştırıyoruz.
+-   `git rebase master` : Ama feat'in içerisinde çalıştırıyoruz.
 
 **Not:** Burada tarihi baştan yazıyoruz.
 
 **Örnek:** Bir projemiz var. Bu proje içerisindeki tüm commitleri silmek istiyorum.
 
-1. Öncelikle, projenizin tarihçesindeki hangi commitleri silmek istediğinizi belirleyin. Bu adımı yaparken dikkatli olun ve sadece silmek istediğiniz commitleri seçin.
-2. Silmek istediğiniz commitleri belirledikten sonra, bu commitlerin kimlik numaralarını (hash) alın. Bu işlemi, terminalden `git log` komutunu kullanarak yapabilirsiniz.
-3. Ardından, `git rebase -i` komutunu kullanarak interaktif rebasing işlemine başlayın. Bu işlem, önce belirlediğiniz commitin öncesi olan commitlerin tamamını geçici olarak saklar.
-4. Rebase işlemi sırasında karşınıza bir düzenleme ekranı açılacaktır. Bu ekranda, silmek istediğiniz commitlerin kimlik numaralarını (hash) belirtilen satırlardan silin.
-5. Düzenlemeyi kaydedip kapatın ve rebase işlemini tamamlayın.
-6. Son olarak, `git push --force` komutunu kullanarak, projenizi uzaktaki depoya itin. Ancak, burada dikkatli olun, `--force` parametresi, projenizi uzaktaki depoda bulunan versiyonla tamamen değiştirir. Bu nedenle, projenizi başka kullanıcıların çalıştığı bir ortamda kullanmadan önce, bu işlemi yapmanızı önermiyoruz.
+1.  Öncelikle, projenizin tarihçesindeki hangi commitleri silmek istediğinizi belirleyin. Bu adımı yaparken dikkatli olun ve sadece silmek istediğiniz commitleri seçin.
+2.  Silmek istediğiniz commitleri belirledikten sonra, bu commitlerin kimlik numaralarını (hash) alın. Bu işlemi, terminalden `git log` komutunu kullanarak yapabilirsiniz.
+3.  Ardından, `git rebase -i` komutunu kullanarak interaktif rebasing işlemine başlayın. Bu işlem, önce belirlediğiniz commitin öncesi olan commitlerin tamamını geçici olarak saklar.
+4.  Rebase işlemi sırasında karşınıza bir düzenleme ekranı açılacaktır. Bu ekranda, silmek istediğiniz commitlerin kimlik numaralarını (hash) belirtilen satırlardan silin.
+5.  Düzenlemeyi kaydedip kapatın ve rebase işlemini tamamlayın.
+6.  Son olarak, `git push --force` komutunu kullanarak, projenizi uzaktaki depoya itin. Ancak, burada dikkatli olun, `--force` parametresi, projenizi uzaktaki depoda bulunan versiyonla tamamen değiştirir. Bu nedenle, projenizi başka kullanıcıların çalıştığı bir ortamda kullanmadan önce, bu işlemi yapmanızı önermiyoruz.
 
 Unutmayın, eski commitleri silmek, projenizin tarihçesini değiştirerek geri dönüşü olmayan bir değişiklik yapar. Bu nedenle, bunu yapmadan önce, nedenini ve sonuçlarını iyi anladığınızdan emin olun.
 
+### **Git Cherry-pick**
+
+Başka bir daldaki (branch) belirli bir commit'i mevcut dalınıza uygulamak için kullanılır. Tüm dalı birleştirmek (merge) yerine sadece ihtiyacınız olan değişikliği alırsınız.
+
+> `git cherry-pick <commit-hash>`
+
+### **Git Aliases (Takma Adlar)**
+
+Uzun Git komutlarını kısaltmak için kullanılır. Örneğin, `git status` yerine `git s` yazmak için:
+
+> `git config --global alias.s status`
+> `git config --global alias.lg "log --graph --oneline --all"`
+
+Bu komutlardan sonra `git lg` yazarak grafiksel log kaydını görebilirsiniz.
+
 ## 5. GitHub
 
-### ****GitHub** Nedir**
+### **GitHub Nedir?**
 
 **Git Nedir:** Sürüm kontrolü sistemi olarak bilinir. Sürüm kontrolü, bir projenin değişikliklerinin kaydedilmesi, takip edilmesi ve yönetilmesi için kullanılan bir teknolojidir. Git, birçok kişinin aynı projede çalışması durumunda kullanışlıdır.
 
-****GitHub** Nedir:** Bu versiyon kontrol sistemi ile birlikte kullandığımız projeleri depolayabileceğimiz bir portal
+**GitHub Nedir?** Bu versiyon kontrol sistemi ile birlikte kullandığımız projeleri depolayabileceğimiz bir portal
 
-### **Git ve**GitHub**Arasındaki Farklar**
+### **Git ve GitHub Arasındaki Farklar**
 
 Git, sadece bir sürüm kontrolü sistemidir ve yerel bir bilgisayarda çalışırken **GitHub**, Git üzerine inşa edilmiş bir bulut barındırma hizmetidir.
 
@@ -470,27 +515,27 @@ Git, bir projenin sürüm kontrolünü yönetirken, **GitHub**, projenin paylaş
 
 **Explore:** İlgi alanlarınıza göre önerilen projeleri ve popüler projeleri gösteren bir özelliktir.
 
-### **Github İlk Repo**
+### **GitHub İlk Repo**
 
-Github'a ilk repo oluşturmak için öncelikle bir Github hesabınızın olması gerekiyor. Eğer henüz bir hesabınız yoksa, Github adresinden hesap oluşturabilirsiniz.
+GitHub'a ilk repo oluşturmak için öncelikle bir GitHub hesabınızın olması gerekiyor. Eğer henüz bir hesabınız yoksa, [GitHub](https://github.com) adresinden hesap oluşturabilirsiniz.
 
 İlk repo oluşturmak için aşağıdaki adımları takip edebilirsiniz:
 
-1. Github hesabınıza giriş yapın.
+1.  GitHub hesabınıza giriş yapın.
 
-2. Sağ üst köşedeki '+' butonuna tıklayarak "New repository" seçeneğini seçin.
+2.  Sağ üst köşedeki '+' butonuna tıklayarak "New repository" seçeneğini seçin.
 
-3. Repository adını ve açıklamasını girin. Repository adınızın benzersiz olması gerektiğini unutmayın.
+3.  Repository adını ve açıklamasını girin. Repository adınızın benzersiz olması gerektiğini unutmayın.
 
-4. Public veya Private olarak repo ayarlarını belirleyin. Public seçeneği herkese açık olurken, Private seçeneği sadece sizin veya ekibinizin erişebileceği şekilde oluşturulur.
+4.  Public veya Private olarak repo ayarlarını belirleyin. Public seçeneği herkese açık olurken, Private seçeneği sadece sizin veya ekibinizin erişebileceği şekilde oluşturulur.
 
-5. README dosyası oluşturma seçeneğini seçin. Bu seçenek, repo sayfanızda görüntülenen açıklama sayfasıdır.
+5.  README dosyası oluşturma seçeneğini seçin. Bu seçenek, repo sayfanızda görüntülenen açıklama sayfasıdır.
 
-6. Lisans seçeneğini belirleyin. Eğer projeniz açık kaynak ise bir lisans seçmeniz gerekmektedir.
+6.  Lisans seçeneğini belirleyin. Eğer projeniz açık kaynak ise bir lisans seçmeniz gerekmektedir.
 
-7. "Create repository" butonuna tıklayın ve ilk repo'nuzu oluşturun.
+7.  "Create repository" butonuna tıklayın ve ilk repo'nuzu oluşturun.
 
-Artık ilk repo'nuzu oluşturduğunuza göre, projenizi bilgisayarınızdan Github'a yüklemeye başlayabilirsiniz. Bunun için öncelikle bilgisayarınıza git yüklemeniz ve projenizi local olarak oluşturmanız gerekiyor.
+Artık ilk repo'nuzu oluşturduğunuza göre, projenizi bilgisayarınızdan GitHub'a yüklemeye başlayabilirsiniz. Bunun için öncelikle bilgisayarınıza Git yüklemeniz ve projenizi local olarak oluşturmanız gerekiyor.
 
 <p align="center">
    <img src="./images/create_new_repository.png" alt="Görüntü açıklaması" width="800" />
@@ -521,7 +566,7 @@ git push -u origin main # origin'e commitler gönderilir
 git push -u origin main
 ```
 
-Eğer hali hazırda olan bir projeniz varsa onu Github pushlamak isterseniz aşağıdaki adımları takip edebilirsiniz.
+Eğer halihazırda olan bir projeniz varsa onu GitHub'a pushlamak isterseniz aşağıdaki adımları takip edebilirsiniz.
 
 ```bash
 …or push an existing repository from the command line
@@ -531,20 +576,20 @@ git branch -M main
 git push -u origin main
 ```
 
-- `remote`, uzaktaki repository için kullandığımız bir terim.
+-   `remote`, uzaktaki repository için kullandığımız bir terim.
 
-- Bide `origin` kavramı çıkyor anlamı başlangıcı demek bu bir isim bir komut değildir. Yani `origin` dediğimde `https://github.com/mkdemir/Git_ve_Github_Rehberi.git` bu url temsil etmektedir.
+-   Bide `origin` kavramı çıkyor anlamı başlangıcı demek bu bir isim bir komut değildir. Yani `origin` dediğimde `https://github.com/mkdemir/Git_ve_Github_Rehberi.git` bu url temsil etmektedir.
 
-- `git push` ile de içerisindeki bulunduğunuz `commit`'leri `origin` ile temsil edilen yere gönderiyor.
+-   `git push` ile de içerisindeki bulunduğunuz `commit`'leri `origin` ile temsil edilen yere gönderiyor.
 
-- `git push -u origin main`: Origin'e yolla diyor. Her zaman URL girmemizin önüne geçmektedir.
+-   `git push -u origin main`: Origin'e yolla diyor. Her zaman URL girmemizin önüne geçmektedir.
 
 Yada başka bir repository'den kodları çağrabilirsin.
 
 ```bash
 ...or push an existing repository from the command line
 
-git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git 
+git remote add origin https://github.com/mkdemir/Git_ve_Github_Rehberi.git
 git branch -M main
 git push -u origin main
 ```
@@ -569,13 +614,13 @@ Eğer değişiklikler onaylanırsa, projenin sahibi ya da ekibi, **Pull request*
 
 İşlem adımları şu şekilde olabilir:
 
-1. Projenin **GitHub** sayfasına gidin ve projeyi fork edin (kendi hesabınıza bir kopya oluşturun).
-2. Kendi fork dalınızı (branch) oluşturun ve hata düzeltmesini yapın.
-3. Değişikliklerinizi commit edin ve **GitHub** hesabınıza yükleyin.
-4. **GitHub** sayfasından, **Pull request** (PR) düğmesine tıklayın ve değişikliklerinizi açıklayan bir açıklama yazın.
-5. PR'nizi projenin sahibine gönderin.
-6. Projenin sahibi veya ekibi, PR'nizi inceleyecek ve hata düzeltmesinin kabul edilip edilmeyeceğine karar verecek.
-7. Eğer değişiklikler kabul edilirse, projenin sahibi veya ekibi değişiklikleri ana kod tabanına (master dalı gibi) birleştirir ve sizin değişiklikleriniz de projede yer almış olur.
+1.  Projenin **GitHub** sayfasına gidin ve projeyi fork edin (kendi hesabınıza bir kopya oluşturun).
+2.  Kendi fork dalınızı (branch) oluşturun ve hata düzeltmesini yapın.
+3.  Değişikliklerinizi commit edin ve **GitHub** hesabınıza yükleyin.
+4.  **GitHub** sayfasından, **Pull request** (PR) düğmesine tıklayın ve değişikliklerinizi açıklayan bir açıklama yazın.
+5.  PR'nizi projenin sahibine gönderin.
+6.  Projenin sahibi veya ekibi, PR'nizi inceleyecek ve hata düzeltmesinin kabul edilip edilmeyeceğine karar verecek.
+7.  Eğer değişiklikler kabul edilirse, projenin sahibi veya ekibi değişiklikleri ana kod tabanına (master dalı gibi) birleştirir ve sizin değişiklikleriniz de projede yer almış olur.
 
 Bu şekilde, **Pull request** işlemi sayesinde, herhangi bir projeye katkıda bulunabilirsiniz ve bu projelerin geliştirilmesine katkıda bulunabilirsiniz.
 
